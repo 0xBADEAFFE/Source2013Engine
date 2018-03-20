@@ -1016,6 +1016,20 @@ PropTypeFns g_PropTypeFns[DPT_NUMSendPropTypes] =
 		Vector_SkipProp,
 	},
 
+	// FIXME: Not Implemented Yet!
+	// DPT_VectorXY
+	{
+		Vector_Encode,
+		Vector_Decode,
+		Vector_CompareDeltas,
+		Generic_FastCopy,
+		Vector_GetTypeNameString,
+		Vector_IsZero,
+		Vector_DecodeZero,
+		Vector_IsEncodedZero,
+		Vector_SkipProp,
+	},
+
 	// DPT_String
 	{
 		String_Encode,
