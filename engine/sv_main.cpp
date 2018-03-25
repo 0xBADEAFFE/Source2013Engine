@@ -1849,6 +1849,7 @@ static void SV_AllocateEdicts()
 	for (int i = 0; i < sv.max_edicts; ++i)
 	{
 		new( &sv.edicts[i] ) edict_t;
+		sv.edicts[i].m_EdictIndex = i;
 	}
 
 	sv.edictchangeinfo = (IChangeInfoAccessor *)Hunk_AllocName( sv.max_edicts * sizeof( IChangeInfoAccessor ), "edictchangeinfo" );
