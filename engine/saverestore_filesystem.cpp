@@ -14,7 +14,7 @@
 #include "host.h"
 #include "sys.h"
 #include "tier1/utlbuffer.h"
-#include "tier1/lzss.h"
+#include "tier1/lzss_alt.h"
 #include "tier1/convar.h"
 #include "ixboxsystem.h"
 

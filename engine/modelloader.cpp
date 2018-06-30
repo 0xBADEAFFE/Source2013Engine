@@ -102,7 +102,6 @@ BEGIN_BYTESWAP_DATADESC( lump_t )
 	DEFINE_FIELD( fileofs, FIELD_INTEGER ),
 	DEFINE_FIELD( filelen, FIELD_INTEGER ),
 	DEFINE_FIELD( version, FIELD_INTEGER ),
-	DEFINE_ARRAY( fourCC, FIELD_CHARACTER, 4 ),
 END_BYTESWAP_DATADESC()
 
 BEGIN_BYTESWAP_DATADESC( dheader_t )
@@ -581,7 +580,7 @@ int CMapLoadHelper::LumpSize( int lumpId )
 
 	lump_t *pLump = &s_MapHeader.lumps[ lumpId ];
 	Assert( pLump );
-
+#if 0
 	if ( IsX360() )
 	{
 		// a compressed lump hides the uncompressed size in the unused fourCC
@@ -593,7 +592,7 @@ int CMapLoadHelper::LumpSize( int lumpId )
 			return originalSize;
 		}
 	}
-
+#endif
 	return pLump->filelen;
 }
 
@@ -748,6 +747,7 @@ CMapLoadHelper::CMapLoadHelper( int lumpToLoad )
 	if ( IsX360() )
 	{
 		// only 360 has compressed lumps
+		#pragma warning( disable : 4101)
 		CLZMA lzma;
 		if ( lzma.IsCompressed( m_pData ) )
 		{
@@ -2662,6 +2662,7 @@ bool Mod_LoadGameLump( int lumpId, void *pOutBuffer, int size )
 
 	if ( IsX360() )
 	{
+		#pragma warning( disable : 4101)
 		// uncompress directly into caller's buffer
 		CLZMA lzma;
 		int outputLength;

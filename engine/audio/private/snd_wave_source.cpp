@@ -620,6 +620,7 @@ bool CAudioSourceWave::GetXboxAudioStartupData()
 				Assert( m_pTempSentence );
 				m_bNoSentence = false;
 
+#pragma warning( disable : 4101)
 				// vdat is precompiled into minimal binary format and possibly compressed
 				CLZMA lzma;
 				

@@ -47,7 +47,7 @@
 #include "sys.h"
 #include <vstdlib/random.h>
 #include "tier0/vcrmode.h"
-#include "SteamInterface.h"
+//#include "SteamInterface.h"
 #include "sys_dll.h"
 #include "avi/iavi.h"
 #include "cl_steamauth.h"

@@ -1511,6 +1511,13 @@ public:
 	// Get sv.GetTime()
 	virtual float GetServerTime() const { return sv.GetTime(); }
 
+		// Exposed for server plugin authors
+	virtual IServer *GetIServer() { return NULL; }
+
+	virtual bool IsPlayerNameLocked( const edict_t *pEdict ) { return true; }
+	virtual bool CanPlayerChangeName( const edict_t *pEdict ) { return true; }
+	virtual eFindMapResult FindMap( /* in/out */ char *pMapName, int nMapNameMax ) { return eFindMap_NotFound; }
+
 private:
 	
 	// Purpose: Sends a temp entity to the client ( follows the format of the original MESSAGE_BEGIN stuff from HL1

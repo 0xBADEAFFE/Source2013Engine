@@ -66,7 +66,9 @@
 #include "datacache/idatacache.h"
 #include "filesystem/IQueuedLoader.h"
 #include "vstdlib/jobthread.h"
+#ifndef NO_STEAM
 #include "SourceAppInfo.h"
+#endif
 #include "cl_rcon.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
@@ -695,7 +697,7 @@ struct ModDirPermissions_t
 	int m_iAppID;
 	const char *m_pchGameDir;
 };
-
+#ifndef NO_STEAM
 static ModDirPermissions_t g_ModDirPermissions[] =
 {
 	{ GetAppSteamAppId( k_App_CSS ),        GetAppModName( k_App_CSS ) },
@@ -709,7 +711,7 @@ static ModDirPermissions_t g_ModDirPermissions[] =
 	{ GetAppSteamAppId( k_App_HL2_EP2 ),    GetAppModName( k_App_HL2_EP2 ) },
 	{ GetAppSteamAppId( k_App_TF2 ),        GetAppModName( k_App_TF2 ) },
 };
-
+#endif
 bool ServerDLL_Load()
 {
 	// Load in the game .dll

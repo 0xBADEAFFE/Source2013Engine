@@ -7,7 +7,7 @@
 
 #include "tier0/platform.h"
 #include "tier0/dbg.h"
-#include "tier1/lzss.h"
+#include "tier1/lzss_alt.h"
 
 #define LZSS_LOOKSHIFT		4
 #define LZSS_LOOKAHEAD		( 1 << LZSS_LOOKSHIFT )

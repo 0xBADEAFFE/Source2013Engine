@@ -1117,6 +1117,21 @@ public:
 	// Get gamedata string to send to the master serer updater.
 	virtual const char *GetServerBrowserGameData() { return NULL; /*DUMMY*/ }
 
+	// Called to add output to the status command
+	virtual void 			Status( void (*print) (const char *fmt, ...) ) {};
+
+	virtual void PrepareLevelResources( /* in/out */ char *pszMapName, size_t nMapNameSize,
+	                                    /* in/out */ char *pszMapFile, size_t nMapFileSize ) {};
+
+	virtual ePrepareLevelResourcesResult AsyncPrepareLevelResources( /* in/out */ char *pszMapName, size_t nMapNameSize,
+	                                                                 /* in/out */ char *pszMapFile, size_t nMapFileSize,
+																	 float *flProgress = NULL ) { return ePrepareLevelResources_Prepared; }
+
+	virtual eCanProvideLevelResult CanProvideLevel( /* in/out */ char *pMapName, int nMapNameMax ) { return eCanProvideLevel_CannotProvide; }
+
+	// Called to see if the game server is okay with a manual changelevel or map command
+	virtual bool			IsManualMapChangeOkay( const char **pszReason ) { return true; }
+
 private:
 	ServerGameDLLV3::IServerGameDLL *m_pServerGameDLL;
 	bool m_bInittedSendProxies;

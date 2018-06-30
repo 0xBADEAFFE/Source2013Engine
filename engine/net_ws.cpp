@@ -10,7 +10,7 @@
 
 #include "net_ws_headers.h"
 #include "net_ws_queued_packet_sender.h"
-#include "tier1/lzss.h"
+#include "tier1/lzss_alt.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

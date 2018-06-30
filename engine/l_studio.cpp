@@ -3621,6 +3621,7 @@ void CModelRender::StaticPropColorMeshCallback( void *pContext, const void *pDat
 
 	if ( IsX360() )
 	{
+#pragma warning( disable : 4101)
 		// only the 360 has compressed VHV data
 		CLZMA lzma;
 

@@ -562,6 +562,8 @@ public:
 	// Unlike Key_LookupBinding, leading '+' characters are not stripped from bindings.
 	virtual	const char			*Key_LookupBindingExact( const char *pBinding ) {  return NULL; /*DUMMY*/ };
 
+	virtual void				AddPhonemeFile( const char *pszPhonemeFile ) {};
+
 	virtual bool				REMOVED_SteamRefreshLogin( const char *password, bool isSecure ) { return false; }
 	virtual bool				REMOVED_SteamProcessCall( bool & finished ) { return false; }
 
