@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright Â© 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -383,7 +383,7 @@ void CEngineSoundServer::StopSound( int iEntIndex, int iChannel, const char *pSa
 	filter.AddAllPlayers();
 	filter.MakeReliable();
 
-	EmitSound( filter, iEntIndex, iChannel, pSample, 0, 0, SNDLVL_NONE, SND_STOP, PITCH_NORM,
+	EmitSound( filter, iEntIndex, iChannel, pSample, 0, 0, SND_STOP, PITCH_NORM, 0,
 		NULL, NULL, NULL, true );
 }
 
