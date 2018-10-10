@@ -208,7 +208,7 @@ public:
 		const QAngle& angles, 
 		bool bSort )
 	{
-		R_DrawBrushModel( baseentity, model, origin, angles, bSort, (ERenderDepthMode)-1 );
+		R_DrawBrushModel( baseentity, model, origin, angles, false, true, true );
 	}
 
 	// Draw brush model shadow
@@ -529,7 +529,7 @@ public:
 
 	void DrawBrushModelEx( IClientEntity *baseentity, model_t *model, const Vector& origin, const QAngle& angles, DrawBrushModelMode_t mode )
 	{
-		//DUMMY
+		R_DrawBrushModel( baseentity, model, origin, angles, false, mode != 2, mode != 1 );
 	}
 };
 

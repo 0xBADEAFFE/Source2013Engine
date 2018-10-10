@@ -91,7 +91,7 @@ void R_DrawBrushModel(
 	model_t *model, 
 	const Vector& origin, 
 	const QAngle& angles, 
-	bool bSort, ERenderDepthMode ShadowDepth );
+	bool bSort, bool bOpaque, bool bTranslucent );
 
 void R_DrawBrushModelShadow( IClientRenderable* pRender );
 void R_BrushBatchInit( void );

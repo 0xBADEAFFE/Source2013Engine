@@ -4565,7 +4565,7 @@ public:
 // Output : void R_DrawBrushModel
 //-----------------------------------------------------------------------------
 void R_DrawBrushModel( IClientEntity *baseentity, model_t *model, 
-						const Vector& origin, const QAngle& angles, bool bSort, ERenderDepthMode DepthMode )
+						const Vector& origin, const QAngle& angles, bool bSort, bool bOpaque, bool bTranslucent  )
 {
 	VPROF( "R_DrawBrushModel" );
 
@@ -4598,28 +4598,25 @@ void R_DrawBrushModel( IClientEntity *baseentity, model_t *model,
 		pRenderContext->CopyRenderTargetToTexture( pRenderContext->GetFrameBufferCopyTexture( 0 ) );
 	}
 
-	bool bShadowDepth = ( DepthMode > -1 );
-
 	if ( s_pBrushRenderOverride )
 	{
 		R_DrawBrushModel_Override( baseentity, model, origin );
 	}
-	else
+	else if ( model->flags & 2 )
 	{
-		if ( bSort )
+		if ( bOpaque )
 		{
-			if ( !bShadowDepth )
-			{
-				g_BrushBatchRenderer.DrawTranslucentBrushModel( baseentity, model, origin, bShadowDepth );
-			}
+			g_BrushBatchRenderer.DrawOpaqueBrushModel( baseentity, model, origin, false );
 		}
-		else
+		if ( bTranslucent )
 		{
-			g_BrushBatchRenderer.DrawOpaqueBrushModel( baseentity, model, origin, bShadowDepth );
+			g_BrushBatchRenderer.DrawTranslucentBrushModel( model, baseentity );
 		}
 	}
+	else if ( bOpaque )
+		g_BrushBatchRenderer.DrawOpaqueBrushModel( baseentity, model, origin, bSort );
 
-	Shader_BrushEnd( pRenderContext, brushTransform.GetNonIdentityMatrix(), model, bShadowDepth, baseentity );
+	Shader_BrushEnd( pRenderContext, brushTransform.GetNonIdentityMatrix(), model, bSort, baseentity );
 
 #ifdef USE_CONVARS
 	if ( r_drawbrushmodels.GetInt() == 2 )
