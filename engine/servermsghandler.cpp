@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright Â© 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -503,7 +503,7 @@ bool CClientState::ProcessSounds( SVC_Sounds *msg )
 
 	for ( int i=0; i<msg->m_nNumSounds; i++ )
 	{
-		sound.ReadDelta( pDeltaSound, msg->m_DataIn, 1 );
+		sound.ReadDelta( pDeltaSound, msg->m_DataIn, g_ClientGlobalVariables.network_protocol );
 
 		pDeltaSound = &sound;	// copy delta values
 
