@@ -4,4 +4,5 @@ The 2007 engine code ported to the 2013 source branch.
 ## Does it compile?
 Yes.
 ## Does it work?
-Yes and no, it has a lot of issues(that i do not have time to fix)
+So far yes, although its only ment to be used on the sp branch
+Also, steam is disabled due to deprecated api
