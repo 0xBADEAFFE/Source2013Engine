@@ -1122,7 +1122,7 @@ public:
 
 	virtual void PrepareLevelResources( /* in/out */ char *pszMapName, size_t nMapNameSize,
 	                                    /* in/out */ char *pszMapFile, size_t nMapFileSize ) {};
-
+#ifdef MP //These are only for the mp branch of the sdk
 	virtual ePrepareLevelResourcesResult AsyncPrepareLevelResources( /* in/out */ char *pszMapName, size_t nMapNameSize,
 	                                                                 /* in/out */ char *pszMapFile, size_t nMapFileSize,
 																	 float *flProgress = NULL ) { return ePrepareLevelResources_Prepared; }
@@ -1131,7 +1131,7 @@ public:
 
 	// Called to see if the game server is okay with a manual changelevel or map command
 	virtual bool			IsManualMapChangeOkay( const char **pszReason ) { return true; }
-
+#endif
 private:
 	ServerGameDLLV3::IServerGameDLL *m_pServerGameDLL;
 	bool m_bInittedSendProxies;
