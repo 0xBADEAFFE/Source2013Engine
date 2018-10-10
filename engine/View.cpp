@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright Â© 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -403,7 +403,6 @@ public:
 
 	int GetViewEntity( void )
 	{
-		return cl.m_nViewEntity;
 	}
 
 	float GetFieldOfView( void )
@@ -498,7 +497,7 @@ public:
 		const QAngle& angles, 
 		ERenderDepthMode DepthMode )
 	{
-		R_DrawBrushModel( baseentity, model, origin, angles, DepthMode, DepthMode );
+		R_DrawBrushModel( baseentity, model, origin, angles, DepthMode, true, true );
 	}
 
 	void UpdateBrushModelLightmap( model_t *model, IClientRenderable *pRenderable )
