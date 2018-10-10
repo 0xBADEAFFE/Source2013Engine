@@ -1,4 +1,4 @@
-//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//===== Copyright Â© 1996-2005, Valve Corporation, All rights reserved. ======//
 //
 // Purpose: 
 //
@@ -19,6 +19,7 @@
 #include "sv_main.h"
 #include "demo.h"
 #include <ctype.h>
+#include "cdll_engine_int.h"
 #ifdef _LINUX
 #include <wctype.h>
 #endif
@@ -388,11 +389,13 @@ bool CCvarUtilities::IsCommand( const CCommand &args )
 	if ( v->IsFlagSet( FCVAR_NOT_CONNECTED ) )
 	{
 #ifndef SWDS
-		// Connected to server?
-		if ( cl.IsConnected() )
+		if ( cl.m_nMaxClients > 1 )
 		{
-			ConMsg( "Can't set %s when connected\n", v->GetName() );
-			return true;
+			if ( !g_ClientDLL->IsConnectedUserInfoChangeAllowed(v))
+			{
+				ConMsg("Can't change %s when playing, disconnect from the server or switch team to spectators\n", v->GetName());
+				return true;
+			}
 		}
 #endif
 	}
