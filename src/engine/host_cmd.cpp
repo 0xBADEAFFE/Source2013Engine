@@ -929,7 +929,7 @@ void Host_Version( void )
 CON_COMMAND( version, "Print version info string." )
 {
 	ConMsg( "Protocol version %i\nExe version %s (%s)\n", PROTOCOL_VERSION, gpszVersionString, gpszProductString );
-	ConMsg( "Exe build: %i ("__DATE__" "__TIME__") \n", build_number() );
+	ConMsg( "Exe build: %i ( __DATE__ __TIME__ ) \n", build_number() );
 }
 
 

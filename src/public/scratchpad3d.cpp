@@ -529,7 +529,11 @@ void CScratchPad3D::DrawPolygonsForPixels(
 		vTopRight = vTopLeft + vTopXInc;
 		vBottomRight = vBottomLeft + vBottomXInc;
 
+		#pragma warning(disable:6011)
+		#pragma warning(push)
 		SPRGBA *pSrc = &pData[ y * (pitchInBytes/sizeof(SPRGBA)) ];
+		#pragma warning(push)
+
 		for( int x=0; x < width; x++ )
 		{
 			if ( pData )

@@ -92,7 +92,7 @@ typedef enum
 	NS_MATCHMAKING,
 	NS_SYSTEMLINK,
 	MAX_SOCKETS
-};
+} ESocketIndex_t;
 
 typedef struct netpacket_s
 {

@@ -42,7 +42,7 @@ class HTML: public Panel
 public:
 
 	HTML(Panel *parent,const char *name, bool allowJavaScript = false, bool bPopupWindow = false);
-	~HTML();
+	virtual ~HTML();
 
 	// IHTML pass through functions
 	virtual void OpenURL( const char *URL, const char *pchPostData, bool bForce = false );
@@ -211,6 +211,8 @@ private:
 		DECLARE_CLASS_SIMPLE( CHTMLFindBar, EditablePanel );
 	public:
 		CHTMLFindBar( HTML *parent );
+		virtual ~CHTMLFindBar() {}
+
 		void SetText( const char *pchText ) { m_pFindBar->SetText( pchText ); }
 		void GetText( char *pText, int ccText ) { m_pFindBar->GetText( pText, ccText ); }
 		void OnCommand( const char *pchCmd );

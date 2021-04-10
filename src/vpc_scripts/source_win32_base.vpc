@@ -8,10 +8,12 @@ $Configuration
 	$General
 	{
 		// Request a specific compiler toolset.
-		$PlatformToolset "v110_xp" [$VS2012 && !$ANALYZE] // VS 2012 targeting Windows XP - http://msdn.microsoft.com/en-us/library/vstudio/jj851139.aspx
-		$PlatformToolset "v110" [$VS2012 && $ANALYZE] // VS 2012 for /analyze
-		$PlatformToolset "v120_xp" [$VS2013 && !$ANALYZE] // VS 2013 targeting Windows XP - http://msdn.microsoft.com/en-us/library/vstudio/jj851139.aspx
-		$PlatformToolset "v120" [$VS2013 && $ANALYZE] // VS 2013 for /analyze
+		// $PlatformToolset "v110_xp" [$VS2012 && !$ANALYZE] // VS 2012 targeting Windows XP - http://msdn.microsoft.com/en-us/library/vstudio/jj851139.aspx
+		// $PlatformToolset "v110" [$VS2012 && $ANALYZE] // VS 2012 for /analyze
+		// $PlatformToolset "v120_xp" [$VS2013 && !$ANALYZE] // VS 2013 targeting Windows XP - http://msdn.microsoft.com/en-us/library/vstudio/jj851139.aspx
+		// $PlatformToolset "v120" [$VS2013 && $ANALYZE] // VS 2013 for /analyze
+		// Force VS2019 (v142) toolset
+		$PlatformToolset "v142"
 	}
 
 	$General
@@ -30,7 +32,13 @@ $Configuration
 		$MultiProcessorCompilation "True"
 
 		// warning C4316: object allocated on the heap may not be aligned 16
-		$DisableSpecificWarnings	"$BASE;4316" [$VS2013]
+		// warning C4594: stupid can never be instantiated crap where it thinks parents are inaccessable but it doesn't matter.
+		// warning C4457 & C4456 & C4458 & C4459: variable shadowing (hiding functions/variables with new var with same name.)
+		// warning C4624: destructor was implicitly defined as deleted.
+		// warning C4577: some exception crap. We disable exceptions so this can bugger off.
+		// warning C4838: conversion requires a narrowing conversion
+		// warning C4302: 'conversion' : truncation from 'type 1' to 'type 2'
+		$DisableSpecificWarnings	"$BASE;4316;4594;4457;4456;4458;4459;4624;4577;4838;4302" // [$VS2013]
 
 		// Having lots of warnings makes it harder to notice new, and possibly
 		// important warnings, both on buildbot and in the output window. Lots
@@ -49,6 +57,6 @@ $Configuration
 		// reduces the client.dll size by about 1.14%. When linker optimizations are disabled this has no
 		// effect. This option does not show up in the IDE so we need to add it in $AdditionalOptions.
 		// http://blogs.msdn.com/b/vcblog/archive/2013/09/11/introducing-gw-compiler-switch.aspx
-		$AdditionalOptions	"$BASE /Gw" [$VS2013]
+		$AdditionalOptions	"$BASE /Gw" // [$VS2013]
 	}
 }

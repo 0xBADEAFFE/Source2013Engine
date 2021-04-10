@@ -38,25 +38,25 @@ $Configuration
 
 	$Compiler [$WIN32]
 	{
-		$EnableEnhancedInstructionSet	"Streaming SIMD Extensions (/arch:SSE)"
+		$EnableEnhancedInstructionSet	"Streaming SIMD Extensions 2 (/arch:SSE2)"
 	}
 	
 	$PreBuildEvent
 	{
-		$CommandLine		"if EXIST $OUTLIBDIR\$(TargetName).lib ( for /f $QUOTEdelims=$QUOTE %%A in ('attrib $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE') do set valveTmpIsReadOnly=$QUOTE%%A$QUOTE" "\n" \
-							") else ( if not EXIST $OUTLIBDIR mkdir $OUTLIBDIR )" "\n" \
+		$CommandLine		"if EXIST $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE ( for /f $QUOTEdelims=$QUOTE %%A in ('attrib $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE') do set valveTmpIsReadOnly=$QUOTE%%A$QUOTE" "\n" \
+							") else ( if not EXIST $QUOTE$OUTLIBDIR$QUOTE mkdir $QUOTE$OUTLIBDIR$QUOTE )" "\n" \
 							"set valveTmpIsReadOnlyLetter=%valveTmpIsReadOnly:~6,1%" "\n" \
 							"if $QUOTE%valveTmpIsReadOnlyLetter%$QUOTE==$QUOTER$QUOTE (" "\n" \
-							"    attrib -r $OUTLIBDIR\$(TargetName).lib" "\n" \
-							"    $SRCDIR\devtools\bin\gnu\touch.exe -d $QUOTE1999-01-01$QUOTE $OUTLIBDIR\$(TargetName).lib" "\n" \
-							"    attrib +r $OUTLIBDIR\$(TargetName).lib" "\n" \
+							"    attrib -r $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE" "\n" \
+							"    $QUOTE$SRCDIR\devtools\bin\gnu\touch.exe$QUOTE -d $QUOTE1999-01-01$QUOTE $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE" "\n" \
+							"    attrib +r $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE" "\n" \
 							")" "\n" \
 							"$CRCCHECK" "\n" 			
 	}
 
 	$PreLinkEvent [!$ANALYZE && !$SOURCESDK]
 	{
-		$CommandLine		"call $SRCDIR\vpc_scripts\valve_p4_edit.cmd $OUTLIBDIR\$(TargetName).lib $SRCDIR" 
+		$CommandLine		"call $QUOTE$SRCDIR\vpc_scripts\valve_p4_edit.cmd$QUOTE $QUOTE$OUTLIBDIR\$(TargetName).lib$QUOTE $QUOTE$SRCDIR$QUOTE" 
 	}
 
 	$Librarian

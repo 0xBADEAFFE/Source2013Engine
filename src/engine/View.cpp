@@ -403,6 +403,7 @@ public:
 
 	int GetViewEntity( void )
 	{
+		return 0;
 	}
 
 	float GetFieldOfView( void )

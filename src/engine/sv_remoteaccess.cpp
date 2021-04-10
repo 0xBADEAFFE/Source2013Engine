@@ -73,7 +73,7 @@ ra_listener_id CServerRemoteAccess::GetNextListenerID( bool authConnection, cons
 bool GetStringHelper( CUtlBuffer & cmd, char *outBuf, int bufSize )
 {
 	outBuf[0] = 0;
-	cmd.GetStringManualCharCount(outBuf, bufSize);
+	cmd.GetString(outBuf, bufSize);
 	if ( !cmd.IsValid() )
 	{
 		cmd.Purge();

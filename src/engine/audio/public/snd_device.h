@@ -40,6 +40,8 @@ struct channel_t;
 abstract_class IAudioDevice
 {
 public:
+	virtual ~IAudioDevice() {}
+
 	// Detect the sound hardware and create a compatible device
 	// NOTE: This should NEVER fail.  There is a function called Audio_GetNullDevice
 	// which will create a "null" device that makes no sound.  If we can't create a real 

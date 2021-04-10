@@ -778,17 +778,17 @@ void CBugUIPanel::Init()
 			}
 			else
 			{
-				ConColorMsg( clr, "Couldn't get interface '%s' from '%s'\n", INTERFACEVERSION_BUGREPORTER, m_sDllName );
+				ConColorMsg( clr, "Couldn't get interface '%s' from '%s'\n", INTERFACEVERSION_BUGREPORTER, m_sDllName.String() );
 			}
 		}
 		else
 		{
-			ConColorMsg( clr, "Couldn't get factory '%s'\n", m_sDllName );
+			ConColorMsg( clr, "Couldn't get factory '%s'\n", m_sDllName.String() );
 		}
 	}
 	else
 	{
-		ConColorMsg( clr, "Couldn't load '%s'\n", m_sDllName );
+		ConColorMsg( clr, "Couldn't load '%s'\n", m_sDllName.String() );
 	}
 
 	if ( m_bCanSubmit )
